@@ -42,7 +42,7 @@ const TodoForm = (props) => {
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit} className="ui form error">
-          <Field name="todo" component={renderInput} label="Enter Title" />
+          <Field name="todo" component={renderInput} />
           <button className="ui button primary">Submit</button>
         </form>
       )}

@@ -8,9 +8,12 @@ class TodoList extends React.Component {
     this.props.fetchTodos();
   }
 
-  // determines if edit/delete allowed as admin only
+  // determines if edit/delete allowed (admin only)
   renderAdmin(todo) {
-    if (todo.userId === this.props.currentUserId) {
+    if (
+      todo.userId === this.props.currentUserId &&
+      this.props.currentUserId !== null
+    ) {
       return (
         <div className="right floated content">
           <button className="ui button primary">Edit</button>

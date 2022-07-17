@@ -81,7 +81,7 @@ class TodoCreate extends React.Component {
   render() {
     return (
       <div>
-        <h3>Create a Stream</h3>
+        <h3>Add a task</h3>
         <TodoForm onSubmit={this.onSubmit} />
       </div>
     );
