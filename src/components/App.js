@@ -16,11 +16,11 @@ const App = () => {
         <div>
           <Header />
           <Switch>
-            <Route path={"/"} exact element={<TodoList />} />
-            <Route path="/todos/new" exact element={<TodoCreate />} />
-            <Route path="/todos/edit/:id" exact element={<TodoEdit />} />
-            <Route path="/todos/delete/:id" exact element={<TodoDelete />} />
-            <Route path="/todos/:id" exact element={<TodoShow />} />
+            <Route path="/" exact component={TodoList} />
+            <Route path="/todos/new" exact component={TodoCreate} />
+            <Route path="/todos/edit/:id" exact component={TodoEdit} />
+            <Route path="/todos/delete/:id" exact component={TodoDelete} />
+            <Route path="/todos/:id" exact component={TodoShow} />
           </Switch>
         </div>
       </Router>

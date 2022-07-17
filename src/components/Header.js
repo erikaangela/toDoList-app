@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import GoogleAuth from "./GoogleAuth";
 import "../Header.css";
@@ -7,9 +8,11 @@ const Header = () => {
   return (
     <div className="ui three column grid center aligned container">
       <div className="column">
-        <button className="ui icon button">
-          <i className="plus icon"></i>
-        </button>
+        <Link to="/">
+          <button className="ui icon button">
+            <i className="home icon"></i>
+          </button>
+        </Link>
       </div>
       <div className="column">
         <h1 className="ui header title">

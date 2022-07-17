@@ -75,7 +75,7 @@ import TodoForm from "./TodoForm";
 
 class TodoCreate extends React.Component {
   onSubmit = (formValues) => {
-    this.props.createStream(formValues);
+    this.props.createTodo(formValues);
   };
 
   render() {

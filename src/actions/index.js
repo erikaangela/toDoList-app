@@ -1,5 +1,5 @@
 import todos from "../apis/todos";
-// import history from "../history";
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -32,7 +32,7 @@ export const createTodo = (formValues) => async (dispatch, getState) => {
   dispatch({ type: CREATE_TODO, payload: response.data });
 
   // programmatic navigation to get user back to root route
-  // history.push("/");
+  history.push("/");
 };
 
 export const fetchTodos = () => async (dispatch) => {
