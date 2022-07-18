@@ -21,7 +21,7 @@ class TodoDelete extends React.Component {
         {/* onClick will only call action at a certain time -- when we have the todo id */}
         <button
           onClick={() => this.props.deleteTodo(id)}
-          className="ui button negative"
+          className="ui black button"
         >
           Delete
         </button>
@@ -37,7 +37,7 @@ class TodoDelete extends React.Component {
       return "Are you sure you want to delete this task?";
     }
 
-    return `Are you sure you want to delete the task "${this.props.todo.todo}"?`;
+    return `Are you sure you want to delete the task \u2014 "${this.props.todo.todo}" ?`;
   }
 
   render() {

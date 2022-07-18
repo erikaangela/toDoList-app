@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTodos } from "../../actions";
 
+import "../../TodoList.css";
+
 class TodoList extends React.Component {
   componentDidMount() {
     this.props.fetchTodos();
@@ -16,11 +18,17 @@ class TodoList extends React.Component {
     ) {
       return (
         <div className="right floated content">
-          <Link to={`/todos/edit/${todo.id}`} className="ui pink button">
-            Edit
+          <Link
+            to={`/todos/edit/${todo.id}`}
+            className="tiny ui teal icon button"
+          >
+            <i className="edit outline icon"></i>
           </Link>
-          <Link to={`/todos/delete/${todo.id}`} className="ui grey button">
-            Delete
+          <Link
+            to={`/todos/delete/${todo.id}`}
+            className="tiny ui grey icon button"
+          >
+            <i className="trash alternate outline icon"></i>
           </Link>
         </div>
       );
@@ -32,7 +40,9 @@ class TodoList extends React.Component {
       return (
         <div className="item" key={todo.id}>
           {this.renderAdmin(todo)}
-          <div className="content">{todo.todo}</div>
+          <div className="content">
+            <p className="content-text">{todo.todo}</p>
+          </div>
         </div>
       );
     });
@@ -41,9 +51,9 @@ class TodoList extends React.Component {
   renderCreate() {
     if (this.props.isSignedIn) {
       return (
-        <div style={{ textAlign: "right" }}>
-          <Link to="/todos/new" className="ui pink button">
-            Create todo
+        <div style={{ textAlign: "center" }}>
+          <Link to="/todos/new" className="ui teal button">
+            Add a task
           </Link>
         </div>
       );
@@ -53,7 +63,9 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <div className="ui divided list">{this.renderList()}</div>
+        <div className="ui middle aligned selection list">
+          {this.renderList()}
+        </div>
         {this.renderCreate()}
       </div>
     );

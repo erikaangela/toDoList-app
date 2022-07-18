@@ -9,8 +9,9 @@ const Header = () => {
     <div className="ui three column grid center aligned container">
       <div className="column">
         <Link to="/">
-          <button className="ui icon button">
-            <i className="tasks icon"></i>
+          <button className="ui icon teal basic circular button">
+            <i className="tasks icon" />
+            List
           </button>
         </Link>
       </div>
