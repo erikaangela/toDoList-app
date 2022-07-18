@@ -18,6 +18,8 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={TodoList} />
             <Route path="/todos/new" exact component={TodoCreate} />
+            {/* id can be named anything && either "id" you nav to will show TodoEdit */}
+            {/* We can actually put as many wildcard params as we want */}
             <Route path="/todos/edit/:id" exact component={TodoEdit} />
             <Route path="/todos/delete/:id" exact component={TodoDelete} />
             <Route path="/todos/:id" exact component={TodoShow} />

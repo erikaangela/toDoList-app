@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchTodos } from "../../actions";
+import { deleteTodo, fetchTodos } from "../../actions";
 
 class TodoList extends React.Component {
   componentDidMount() {
@@ -16,7 +16,9 @@ class TodoList extends React.Component {
     ) {
       return (
         <div className="right floated content">
-          <button className="ui button primary">Edit</button>
+          <Link to={`/todos/edit/${todo.id}`} className="ui button primary">
+            Edit
+          </Link>
           <button className="ui button negative">Delete</button>
         </div>
       );
@@ -50,7 +52,6 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <h2>Todos</h2>
         <div className="ui celled list">{this.renderList()}</div>
         {this.renderCreate()}
       </div>

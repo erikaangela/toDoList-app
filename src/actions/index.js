@@ -48,9 +48,12 @@ export const fetchTodo = (id) => async (dispatch) => {
 };
 
 export const editTodo = (id, formValues) => async (dispatch) => {
-  const response = await todos.put(`/todos/${id}`, formValues);
+  // put updates ALL properties, while patch updates SOME and does not destroy other unchanged ones
+  const response = await todos.patch(`/todos/${id}`, formValues);
 
   dispatch({ type: EDIT_TODO, payload: response.data });
+
+  history.push("/");
 };
 
 export const deleteTodo = (id) => async (dispatch) => {
