@@ -10,7 +10,7 @@ const Header = () => {
       <div className="column">
         <Link to="/">
           <button className="ui icon button">
-            <i className="home icon"></i>
+            <i className="tasks icon"></i>
           </button>
         </Link>
       </div>

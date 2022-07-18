@@ -5,7 +5,6 @@ import TodoCreate from "./todos/TodoCreate.js";
 import TodoEdit from "./todos/TodoEdit";
 import TodoDelete from "./todos/TodoDelete";
 import TodoList from "./todos/TodoList";
-import TodoShow from "./todos/TodoShow";
 import Header from "./Header";
 import history from "../history";
 
@@ -22,7 +21,6 @@ const App = () => {
             {/* We can actually put as many wildcard params as we want */}
             <Route path="/todos/edit/:id" exact component={TodoEdit} />
             <Route path="/todos/delete/:id" exact component={TodoDelete} />
-            <Route path="/todos/:id" exact component={TodoShow} />
           </Switch>
         </div>
       </Router>

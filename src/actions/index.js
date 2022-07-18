@@ -60,4 +60,6 @@ export const deleteTodo = (id) => async (dispatch) => {
   await todos.delete(`/todos/${id}`);
 
   dispatch({ type: DELETE_TODO, payload: id });
+
+  history.push("/");
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteTodo, fetchTodos } from "../../actions";
+import { fetchTodos } from "../../actions";
 
 class TodoList extends React.Component {
   componentDidMount() {
@@ -16,10 +16,12 @@ class TodoList extends React.Component {
     ) {
       return (
         <div className="right floated content">
-          <Link to={`/todos/edit/${todo.id}`} className="ui button primary">
+          <Link to={`/todos/edit/${todo.id}`} className="ui pink button">
             Edit
           </Link>
-          <button className="ui button negative">Delete</button>
+          <Link to={`/todos/delete/${todo.id}`} className="ui grey button">
+            Delete
+          </Link>
         </div>
       );
     }
@@ -30,7 +32,6 @@ class TodoList extends React.Component {
       return (
         <div className="item" key={todo.id}>
           {this.renderAdmin(todo)}
-          <i className="large middle aligned icon camera" />
           <div className="content">{todo.todo}</div>
         </div>
       );
@@ -41,7 +42,7 @@ class TodoList extends React.Component {
     if (this.props.isSignedIn) {
       return (
         <div style={{ textAlign: "right" }}>
-          <Link to="/todos/new" className="ui button primary">
+          <Link to="/todos/new" className="ui pink button">
             Create todo
           </Link>
         </div>
@@ -52,7 +53,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <div className="ui celled list">{this.renderList()}</div>
+        <div className="ui divided list">{this.renderList()}</div>
         {this.renderCreate()}
       </div>
     );
