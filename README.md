@@ -1,3 +1,33 @@
+# ToDo App
+
+A to-do list app using React Redux and [JSON-server](https://github.com/typicode/json-server). Upon log-in with a Google account (using [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)), allows user to add, edit, and delete a task item.
+
+### Project Goals
+
+* Apply React and Redux. 
+* Properly apply use of request methods (GET, POST, PUT, ...).
+* Apply router, portals for app flow.
+* Responsive.
+
+### How the app works
+
+The header&mdash;containing a home button, title, and Google log-in button&mdash;is shown upon initial load. The user must log-in through Google to access the rest of the app. After logging in through the [Google API](https://developers.google.com/identity/protocols/oauth2), a button to add a task will be shown. 
+
+Each task can then be edited or deleted. Within the editing and deleting functions, the user will automatically be taken back to the homepage displaying the list after the action.
+
+### Technologies Used
+
+* JavaScript
+* HTML/CSS
+* React JS
+* Redux
+* APIs&mdash;[Google](https://developers.google.com/identity/protocols/oauth2)
+
+### Remaining Backlog Items
+
+* Further styling for smoother application flow&mdash;CSS theming.
+* Add checkboxes for strikethrough.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
