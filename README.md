@@ -5,7 +5,7 @@ A to-do list app using React Redux and [JSON-server](https://github.com/typicode
 ### Project Goals
 
 * Apply React and Redux. 
-* Properly apply use of request methods (GET, POST, PUT, ...).
+* Properly apply use of REST principles.
 * Apply router, portals for app flow.
 * Responsive.
 
