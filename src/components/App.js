@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, withRouter } from "react-router-dom";
 
 import TodoCreate from "./todos/TodoCreate.js";
 import TodoEdit from "./todos/TodoEdit";
@@ -15,12 +15,22 @@ const App = () => {
         <div>
           <Header />
           <Switch>
-            <Route path="/" exact component={TodoList} />
-            <Route path="/todos/new" exact component={TodoCreate} />
+            <Route path="/" exact component={withRouter(TodoList)} />
+            <Route path="/todos/new" exact component={withRouter(TodoCreate)} />
             {/* id can be named anything && either "id" you nav to will show TodoEdit */}
             {/* We can actually put as many wildcard params as we want */}
-            <Route path="/todos/edit/:id" exact component={TodoEdit} />
-            <Route path="/todos/delete/:id" exact component={TodoDelete} />
+            <Route
+              path="/todos/edit/:id"
+              exact
+              component={withRouter(TodoEdit)}
+            />
+            {/* <TodoEdit />
+            </Route> */}
+            <Route
+              path="/todos/delete/:id"
+              exact
+              component={withRouter(TodoDelete)}
+            />
           </Switch>
         </div>
       </Router>
