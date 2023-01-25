@@ -6,7 +6,7 @@ import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
-    window.gapi.load("client:auth2", () => {
+    const initClient = () => {
       window.gapi.client
         .init({
           clientId:
@@ -24,7 +24,7 @@ class GoogleAuth extends React.Component {
           // waits for auth status changes
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
-    });
+    };
   }
 
   // because callback function, set up as arrow so context is bound
