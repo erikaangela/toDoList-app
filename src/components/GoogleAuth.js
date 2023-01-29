@@ -6,25 +6,38 @@ import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
-    const initClient = () => {
-      window.gapi.client
-        .init({
-          clientId:
-            "878755791416-577fukk9g6gm0ruspbhhi0crfoh3s8va.apps.googleusercontent.com",
+    let access_token;
+    let client = window.gapi.initTokenClient({
+      clientId:
+        "878755791416-577fukk9g6gm0ruspbhhi0crfoh3s8va.apps.googleusercontent.com",
 
-          // what we want to access in a user's profile
-          scope: "email",
-          plugin_name: "todo",
-        })
-        .then(() => {
-          this.auth = window.gapi.auth2.getAuthInstance();
+      // what we want to access in a user's profile
+      scope: "email",
+      plugin_name: "todo",
+      callback: (tokenResponse) => {
+        access_token = tokenResponse.access_token;
+      },
+    });
 
-          // immediately updates state in store
-          this.onAuthChange(this.auth.isSignedIn.get());
-          // waits for auth status changes
-          this.auth.isSignedIn.listen(this.onAuthChange);
-        });
-    };
+    // window.gapi.load("client:auth2", () => {
+    //   window.gapi.client
+    //     .init({
+    //       clientId:
+    //         "878755791416-577fukk9g6gm0ruspbhhi0crfoh3s8va.apps.googleusercontent.com",
+
+    //       // what we want to access in a user's profile
+    //       scope: "email",
+    //       plugin_name: "todo",
+    //     })
+    //     .then(() => {
+    //       this.auth = window.gapi.auth2.getAuthInstance();
+
+    //       // immediately updates state in store
+    //       this.onAuthChange(this.auth.isSignedIn.get());
+    //       // waits for auth status changes
+    //       this.auth.isSignedIn.listen(this.onAuthChange);
+    //     });
+    // });
   }
 
   // because callback function, set up as arrow so context is bound
@@ -58,7 +71,10 @@ class GoogleAuth extends React.Component {
       );
     } else {
       return (
-        <button onClick={this.onSignInClick} className="ui blue google button">
+        <button
+          onClick={this.client.requestAccessToken()}
+          className="ui blue google button"
+        >
           <i className="google icon" />
           Sign in with Google
         </button>
