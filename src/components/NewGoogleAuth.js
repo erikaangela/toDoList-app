@@ -29,16 +29,19 @@ class NewGoogleAuth extends React.Component {
     // console.log("Encoded JWT ID token " + response.credential);
     let userObject = jwt_decode(response.credential);
 
-    // this.props.signIn(response.credential);
-    // console.log(this.props);
+    this.props.signIn(response.credential);
+    console.log(this.props);
 
     // document.getElementById("signInDiv").hidden = true;
   };
 
   render() {
+    console.log(this.props);
+
     return (
       <div>
         <div id="signInDiv"></div>
+        <button onClick={() => this.props.signOut()}>Sign Out</button>
       </div>
     );
   }
