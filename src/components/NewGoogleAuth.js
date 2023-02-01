@@ -1,21 +1,19 @@
 import React from "react";
-import { useEffect } from "react";
-
+import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
-const NewGoogleAuth = () => {
+import { signIn, signOut } from "../actions";
+
+// script tag added to index.html to connect Google Auth
+
+class NewGoogleAuth extends React.Component {
   /* global google */
 
-  function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token " + response.credential);
-    let userObject = jwt_decode(response.credential);
-    console.log(userObject);
-  }
-  useEffect(() => {
+  componentDidMount() {
     window.google.accounts.id.initialize({
       client_id:
         "878755791416-577fukk9g6gm0ruspbhhi0crfoh3s8va.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
+      callback: this.handleCallbackResponse,
     });
 
     window.google.accounts.id.renderButton(
@@ -25,13 +23,29 @@ const NewGoogleAuth = () => {
         size: "large",
       }
     );
-  }, []);
+  }
 
-  return (
-    <div>
-      <div id="signInDiv"></div>
-    </div>
-  );
+  handleCallbackResponse = (response) => {
+    // console.log("Encoded JWT ID token " + response.credential);
+    let userObject = jwt_decode(response.credential);
+
+    // this.props.signIn(response.credential);
+    // console.log(this.props);
+
+    // document.getElementById("signInDiv").hidden = true;
+  };
+
+  render() {
+    return (
+      <div>
+        <div id="signInDiv"></div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn };
 };
 
-export default NewGoogleAuth;
+export default connect(mapStateToProps, { signIn, signOut })(NewGoogleAuth);
