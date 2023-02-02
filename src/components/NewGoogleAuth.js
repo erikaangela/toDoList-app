@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
-import { signIn, signOut, deleteTodo } from "../actions";
+import { signIn, signOut } from "../actions";
 
 // script tag added to index.html to connect Google Auth
 
@@ -71,6 +71,4 @@ const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn };
 };
 
-export default connect(mapStateToProps, { signIn, signOut, deleteTodo })(
-  NewGoogleAuth
-);
+export default connect(mapStateToProps, { signIn, signOut })(NewGoogleAuth);

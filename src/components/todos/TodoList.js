@@ -36,16 +36,18 @@ class TodoList extends React.Component {
   }
 
   renderList() {
-    return this.props.todos.map((todo) => {
-      return (
-        <div className="item" key={todo.id}>
-          {this.renderAdmin(todo)}
-          <div className="content">
-            <p className="content-text">{todo.todo}</p>
+    if (this.props.isSignedIn) {
+      return this.props.todos.map((todo) => {
+        return (
+          <div className="item" key={todo.id}>
+            {this.renderAdmin(todo)}
+            <div className="content">
+              <p className="content-text">{todo.todo}</p>
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
+    }
   }
 
   renderCreate() {
