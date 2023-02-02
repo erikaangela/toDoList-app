@@ -27,6 +27,18 @@ class NewGoogleAuth extends React.Component {
     // window.google.accounts.id.prompt();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.isSignedIn !== prevProps.isSignedIn) {
+      window.google.accounts.id.renderButton(
+        document.getElementById("signInDiv"),
+        {
+          theme: "outline",
+          size: "large",
+        }
+      );
+    }
+  }
+
   handleCallbackResponse = (response) => {
     // console.log("Encoded JWT ID token " + response.credential);
     let userObject = jwt_decode(response.credential);
