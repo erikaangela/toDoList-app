@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import GoogleAuth from "./GoogleAuth";
 import NewGoogleAuth from "./NewGoogleAuth";
 
 import "../Header.css";
@@ -24,7 +23,6 @@ const Header = () => {
         </h1>
       </div>
       <div className="column">
-        {/* <GoogleAuth /> */}
         <NewGoogleAuth />
       </div>
     </div>
