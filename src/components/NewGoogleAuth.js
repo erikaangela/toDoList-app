@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
-import { signIn, signOut } from "../actions";
+import { signIn, signOut, deleteTodo } from "../actions";
 
 // script tag added to index.html to connect Google Auth
 
@@ -29,19 +29,22 @@ class NewGoogleAuth extends React.Component {
     // console.log("Encoded JWT ID token " + response.credential);
     let userObject = jwt_decode(response.credential);
 
-    this.props.signIn(response.credential);
-    console.log(this.props);
-
-    // document.getElementById("signInDiv").hidden = true;
+    this.props.signIn(userObject.email);
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <div>
         <div id="signInDiv"></div>
-        <button onClick={() => this.props.signOut()}>Sign Out</button>
+        <button
+          onClick={() => {
+            this.props.signOut();
+          }}
+          className="ui grey google button"
+        >
+          <i className="google icon" />
+          Sign out
+        </button>
       </div>
     );
   }
