@@ -10,17 +10,29 @@ class TodoCreate extends React.Component {
     this.props.createTodo(formValues);
   };
 
+  renderAdmin() {
+    if (this.props.isSignedIn) {
+      return (
+        <div>
+          <h3>Add a task</h3>
+          <TodoForm onSubmit={this.onSubmit} />
+        </div>
+      );
+    }
+  }
+
   render() {
-    return (
-      <div>
-        <h3>Add a task</h3>
-        <TodoForm onSubmit={this.onSubmit} />
-      </div>
-    );
+    return this.renderAdmin();
   }
 }
 
-export default connect(null, { createTodo })(TodoCreate);
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: state.auth.isSignedIn,
+  };
+};
+
+export default connect(mapStateToProps, { createTodo })(TodoCreate);
 
 // import React from "react";
 // import { Field, reduxForm } from "redux-form";
