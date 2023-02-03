@@ -35,23 +35,18 @@ class TodoList extends React.Component {
     }
   }
 
-  // renderMatchingAdmin() {
-  //   const listArr = this.props.todos;
-  //   return listArr.some((item) => item.userId === this.props.currentUserId);
-  // }
-
   renderList() {
-    // && this.renderMatchingAdmin() figure out how to call after list mapped
     if (this.props.isSignedIn) {
       return this.props.todos.map((todo) => {
-        return (
-          <div className="item" key={todo.id}>
-            {this.renderAdmin(todo)}
-            <div className="content">
-              <p className="content-text">{todo.todo}</p>
+        if (todo.userId === this.props.currentUserId)
+          return (
+            <div className="item" key={todo.id}>
+              {this.renderAdmin(todo)}
+              <div className="content">
+                <p className="content-text">{todo.todo}</p>
+              </div>
             </div>
-          </div>
-        );
+          );
       });
     }
   }
