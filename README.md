@@ -1,6 +1,6 @@
 # ToDo App
 
-A to-do list app using React Redux and [JSON-server](https://github.com/typicode/json-server). Upon log-in with a Google account (using [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)), allows user to add, edit, and delete a task item.
+A to-do list app using React Redux and [JSON-server](https://github.com/typicode/json-server). Upon log-in with a Google account (using [Sign In With Google](https://developers.google.com/identity/gsi/web/guides/overview) for authentication), allows user to add, edit, and delete a task item.
 
 ### Project Goals
 
